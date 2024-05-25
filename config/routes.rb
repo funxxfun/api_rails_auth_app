@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   get '/public', to: 'public#public'
   get '/private', to: 'private#private'
+  get '/private-scoped', to: 'private#private_scoped'
 end

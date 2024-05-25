@@ -29,5 +29,6 @@ module ApiRailsAuthApp
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     # config.autoload_paths << "#{Rails.root}/lib"
+    config.auth0 = config_for(:auth0)
   end
 end
