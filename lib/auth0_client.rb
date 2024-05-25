@@ -28,8 +28,7 @@ class Auth0Client
   def self.decode_token(token, jwks_hash)
     JWT.decode(token, nil, true, {
                  algorithm: 'RS256',
-                 iss: https://api-rails-auth-app
-                 ,
+                 iss: 'domain_url',
                  verify_iss: true,
                  aud: Rails.configuration.auth0.audience,
                  verify_aud: true,
@@ -38,7 +37,7 @@ class Auth0Client
   end
 
   def self.get_jwks
-    jwks_uri = URI("#{https://api-rails-auth-app}.well-known/jwks.json")
+    jwks_uri = URI("#{domain_url}.well-known/jwks.json")
     Net::HTTP.get_response jwks_uri
   end
 
