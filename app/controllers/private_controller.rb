@@ -1,8 +1,6 @@
 # frozen_string_literal: true
-class PrivateController < ActionController::API
+class PrivateController < ApplicationController
   before_action :authorize
-
-  include Secured
 
   def private
     # スコープの検証に成功した場合の処理

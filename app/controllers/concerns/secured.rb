@@ -21,15 +21,10 @@ module Secured
 
   def authorize
     token = token_from_request
-
     return if performed?
-
     validation_response = Auth0Client.validate_token(token)
-
     @decoded_token = validation_response.decoded_token
-
     return unless (error = validation_response.error)
-
     render json: { message: error.message }, status: error.status
   end
 
