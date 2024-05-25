@@ -4,7 +4,7 @@ class PrivateController < ApplicationController
 
   def private
     # スコープの検証に成功した場合の処理
-    render json: 'Hello from a private endpoint! You need to be authenticated to see this.'
+    render json: { message: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.' }
   end
 
   def private_scoped
