@@ -28,7 +28,7 @@ class Auth0Client
   def self.decode_token(token, jwks_hash)
     JWT.decode(token, nil, true, {
                  algorithm: 'RS256',
-                 iss: 'domain_url',
+                 iss: 'https://dev-40o731wzgfxo3z3h.us.auth0.com/',
                  verify_iss: true,
                  aud: Rails.configuration.auth0.audience,
                  verify_aud: true,
@@ -37,7 +37,7 @@ class Auth0Client
   end
 
   def self.get_jwks
-    jwks_uri = URI("#{domain_url}.well-known/jwks.json")
+    jwks_uri = URI("https://dev-40o731wzgfxo3z3h.us.auth0.com/.well-known/jwks.json")
     Net::HTTP.get_response jwks_uri
   end
 
@@ -55,7 +55,7 @@ class Auth0Client
     decoded_token = decode_token(token, jwks_hash)
 
     Response.new(decoded_token, nil)
-  rescue JWT::VerificationError, JWT::DecodeError => e
+    rescue JWT::VerificationError, JWT::DecodeError
     error = Error.new('Bad credentials', :unauthorized)
     Response.new(nil, error)
   end
