@@ -8,7 +8,20 @@ RailsをAPIとして使用して認証機能を作成するためのテストア
 
 
 ## 使い方
+`http://localhost:3000/public`にアクセスすると、以下が表示される。
 
+```
+{
+  "message": "Hello from a public endpoint! You don't need to be authenticated to see this."
+}
+```
+
+`http://localhost:3000/private`にアクセスすると、以下が表示される。
+```
+{
+  "message": "Requires authentication"
+}
+```
 
 ## 環境
 
@@ -18,6 +31,11 @@ auth-appを使用するための環境要件は以下の通りです
 - 言語: Ruby 3.2.2、Rails 7.1.3.3
 - パッケージ管理ツール:Homebew
 
+### 環境構築 (docker使用)
+```
+$ docker-compose build
+$ docker-compose up
+```
 
 ### 環境構築
 <!-- ```
